@@ -2,10 +2,10 @@ module GplayApiWrapper
   # Class for resolving "/apps" endpoint requests
   class AgeRestrictions < Base
 
-    BASE = "age_restrictions"
+    BASE = 'age_restrictions'.freeze
 
-    def self.get(qs = {})
-      build_and_send_request("",qs)
+    def self.get(query_string = {})
+      build_and_send_request('', query_string)
     end
 
   end

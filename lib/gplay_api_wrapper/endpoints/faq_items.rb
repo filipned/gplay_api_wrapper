@@ -1,10 +1,10 @@
 module GplayApiWrapper
 
   class FaqItems < Base
-    BASE = "faq_items"
+    BASE = 'faq_items'.freeze
 
-    def self.get(qs = {})
-      build_and_send_request("", qs)
+    def self.get(query_string = {})
+      build_and_send_request('', query_string)
     end
   end
 end

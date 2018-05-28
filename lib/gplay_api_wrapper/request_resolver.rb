@@ -18,5 +18,6 @@ module GplayApiWrapper
     def self.delete
 
     end
+
   end
 end
