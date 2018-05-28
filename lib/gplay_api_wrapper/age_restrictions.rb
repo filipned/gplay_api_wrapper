@@ -1,9 +1,13 @@
 module GplayApiWrapper
-  class AgeRestrictions
-    # da li uvijek prosledjivati qs za svaki endpoint
+  # Class for resolving "/apps" endpoint requests
+  class AgeRestrictions < Base
+
+    BASE = "age_restrictions"
+
     def self.get(qs = {})
-      RequestBuilder.get('age_restrictions', qs)
+      build_and_send_request("",qs)
     end
+
   end
 end
 
