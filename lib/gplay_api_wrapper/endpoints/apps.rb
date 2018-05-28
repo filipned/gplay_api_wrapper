@@ -18,7 +18,6 @@ module GplayApiWrapper
     def self.get_app_versions(app_id, qs = {})
       build_and_send_request("#{app_id}/versions", qs)
     end
-
   end
 end
 
