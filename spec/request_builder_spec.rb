@@ -3,31 +3,29 @@ require 'gplay_api_wrapper/request_builder'
 
 RSpec.describe GplayApiWrapper::RequestBuilder do
 
-  describe '.build_request' do
+  describe '.build_get_request' do
     subject { described_class.build_request(path, query_string) }
     let(:path) { 'apps' }
     let(:query_string) { { key: 'val' } }
 
-    it 'does something successfully' do
-
-    end
-
-    context 'when something changed' do
-      it 'does or does not do something' do
-
+    context 'with path and query params' do
+      it 'should return valid URI' do
+        is_expected.to be_a_kind_of(URI::HTTPS)
+        # is_expected.to be_a_kind_of(URI::InvalidURIError)
       end
     end
-
-    context 'get' do
-      let(:path) { 'apps' }
-      let(:query_string) { { key: 'val' } }
-      it 'with path and query params should must return URI' do
-        expect(subject).to be_an_kind_of URI::HTTPS
-      end
+    context 'without path and query params' do
       let(:path) { '' }
       let(:query_string) { {} }
-      it 'with path and query params should must return URI' do
-        expect(subject).to be_an_kind_of URI::HTTPS
+      it 'should return valid URI' do
+        is_expected.to be_a_kind_of(URI::HTTPS)
+      end
+    end
+
+    context 'when bad path is provided' do
+      let(:path) { 'a a a' }
+      it 'should throw URI::InvalidURIError exception' do
+        is_expected.to be_a_kind_of(URI::InvalidURIError)
       end
     end
   end

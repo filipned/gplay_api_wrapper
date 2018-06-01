@@ -3,7 +3,11 @@ module GplayApiWrapper
   class RequestResolver
 
     def self.get(uri)
-      Net::HTTP.get_response(uri)
+      begin
+        Net::HTTP.get_response(uri)
+      rescue Net::HTTPBadRequest => e
+        e
+      end
     end
 
     def self.post
